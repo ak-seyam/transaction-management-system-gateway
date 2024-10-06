@@ -1,9 +1,9 @@
 import { Inject } from '@nestjs/common';
-import { PSP2Transaction } from 'src/controller/dto/dto';
-import PSPToTransactionEventMapper from 'src/mapper/psp-to-transaction-events.mapper';
-import TransactionServiceRepository from 'src/repository/transaction-service.repository';
-import { SecurityService } from 'src/security/security.service';
-import PSPRouterService from './psp-router.service';
+import { PSP2Transaction } from '@controller/dto/dto';
+import PSPToTransactionEventMapper from '@mapper/psp-to-transaction-events.mapper';
+import TransactionServiceRepository from '@repo/transaction-service.repository';
+import { SecurityService } from '@security/security.service';
+import PSPRouterService from '@service/psp-router.service';
 
 export default class PSP2RouterService
   implements PSPRouterService<PSP2Transaction>

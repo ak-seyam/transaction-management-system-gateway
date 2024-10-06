@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import TransactionServiceRepository from './transaction-service.repository';
+import TransactionServiceRepository from '@repo/transaction-service.repository';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import {
   protobufPackage as transactionServiceProtobufPackage,
   TRANSACTION_SERVICE_NAME,
-} from 'src/common/proto/service';
+} from '@common/proto/service';
 import { join } from 'path';
 
 @Module({

@@ -6,7 +6,7 @@ import {
   TransactionEvent,
   TransactionHistoryResponse,
   TransactionServiceClient,
-} from 'src/common/proto/service';
+} from '@common/proto/service';
 
 @Injectable()
 export default class TransactionServiceRepository implements OnModuleInit {

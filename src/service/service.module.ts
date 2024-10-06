@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import MapperModule from 'src/mapper/mapper.module';
-import { RepositoryModule } from 'src/repository/repository.module';
-import { SecurityModule } from 'src/security/security.module';
-import PSP1RouterService from './psp1-router.service';
-import PSP2RouterService from './psp2-router.service';
+import MapperModule from '@mapper/mapper.module';
+import { RepositoryModule } from '@repo/repository.module';
+import { SecurityModule } from '@security/security.module';
+import PSP1RouterService from '@service/psp1-router.service';
+import PSP2RouterService from '@service/psp2-router.service';
 
 @Module({
   imports: [RepositoryModule, SecurityModule, MapperModule],

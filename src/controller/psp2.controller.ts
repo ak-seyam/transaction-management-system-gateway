@@ -7,8 +7,8 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
-import { PSP2Transaction } from './dto/dto';
-import PSPRouterService from 'src/service/psp-router.service';
+import { PSP2Transaction } from '@controller/dto/dto';
+import PSPRouterService from '@service/psp-router.service';
 
 @Controller('callback/psp2')
 export default class PSP2Controller {

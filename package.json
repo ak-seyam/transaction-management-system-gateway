@@ -84,6 +84,9 @@
       ],
       "@security/(.*)": [
         "<rootDir>/src/security/$1"
+      ],
+      "@service/(.*)": [
+        "./src/service/$1"
       ]
     },
     "coverageDirectory": "../coverage",

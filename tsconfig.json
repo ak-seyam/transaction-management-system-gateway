@@ -22,7 +22,8 @@
       "@controller/*": ["./src/controller/*"],
       "@mapper/*": ["./src/mapper/*"],
       "@repo/*": ["./src/repository/*"],
-      "@security/*": ["./src/security/*"]
+      "@security/*": ["./src/security/*"],
+      "@service/*": ["./src/service/*"]
     }
   }
 }
