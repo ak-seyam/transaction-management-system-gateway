@@ -21,5 +21,6 @@ import { join } from 'path';
       },
     ]),
   ],
+  exports: [TransactionServiceRepository],
 })
 export class RepositoryModule {}

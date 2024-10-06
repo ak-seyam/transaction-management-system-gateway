@@ -1,11 +1,21 @@
-import { Body, Controller, Post, RawBodyRequest, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Inject,
+  Post,
+  RawBodyRequest,
+  Req,
+} from '@nestjs/common';
 import { Request } from 'express';
-import TransactionRoutingService from 'src/service/transaction-routing.service';
 import { PSP2Transaction } from './dto/dto';
+import PSPRouterService from 'src/service/psp-router.service';
 
 @Controller('callback/psp2')
 export default class PSP2Controller {
-  constructor(private tranasctionRoutingService: TransactionRoutingService) {}
+  constructor(
+    @Inject('PSP2_ROUTING_SERVICE')
+    private tranasctionRoutingService: PSPRouterService<PSP2Transaction>,
+  ) {}
 
   @Post()
   postTranasctionEvent(
@@ -13,6 +23,6 @@ export default class PSP2Controller {
     @Body() transactionDto: PSP2Transaction,
   ) {
     const rawBody = rawBodyRequest.rawBody;
-    this.tranasctionRoutingService.acceptPSP2Event(rawBody, transactionDto);
+    this.tranasctionRoutingService.acceptEvent(rawBody, transactionDto);
   }
 }
