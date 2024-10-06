@@ -1,20 +1,20 @@
-import PSP1Mapper from '@mapper/psp1-mapper';
 import {
   MessaageType,
   Provider,
   TransactionEvent,
 } from '@common/proto/service';
-import { PSP1MessageType, PSP1Transaction } from '@controller/dto/dto';
+import { PSP2MessageType, PSP2Transaction } from '@controller/dto/dto';
+import PSP2Mapper from '@mapper/psp2-mapper';
 
-describe('PSP1MapperTests', () => {
-  let mapper: PSP1Mapper;
+describe('PSP2MapperTests', () => {
+  let mapper: PSP2Mapper;
 
   beforeEach(() => {
-    mapper = new PSP1Mapper();
+    mapper = new PSP2Mapper();
   });
 
-  describe('maap psp1 events', () => {
-    it('should map psp1 authorization events successfully', () => {
+  describe('maap psp2 events', () => {
+    it('should map psp2 authorization events successfully', () => {
       const eventTime = new Date();
       const expectedMapping: TransactionEvent = {
         amount: 100_000,
@@ -25,26 +25,29 @@ describe('PSP1MapperTests', () => {
         feesAmount: 0,
         feesCurrency: 'AED',
         feesFractionalDigits: 2,
-        provider: Provider.PSP1,
+        provider: Provider.PSP2,
         providerEventTime: eventTime,
         reference: 'ref1244',
         type: MessaageType.AUTHORIZATION,
       };
-      const input: PSP1Transaction = {
-        billing_currency: 'AED',
-        card_id: 'card123xYz',
-        fee_amount: 0,
+      const input: PSP2Transaction = {
         id: 'event_2345',
-        message_type: PSP1MessageType.AUTHORIZATION,
-        rrn: 'ref1244',
-        transaction_amount: 1000,
-        transaction_timestamp: eventTime,
+        reference: 'ref1244',
+        type: PSP2MessageType.ACCOUNT_TRANSACTION_CREATED,
+        transaction: {
+          account_id: 'card123xYz',
+          amount: '1000',
+          details: {
+            scheme_acceptor_country: 'ARE',
+            scheme_transmission_time: eventTime,
+          },
+        },
       };
       const result = mapper.map(input);
       expect(result).toEqual(expectedMapping);
     });
 
-    it('should map psp1 clearing events successfully', () => {
+    it('should map psp2 clearing events successfully', () => {
       const eventTime = new Date();
       const expectedMapping: TransactionEvent = {
         amount: 100_000,
@@ -55,20 +58,23 @@ describe('PSP1MapperTests', () => {
         feesAmount: 0,
         feesCurrency: 'AED',
         feesFractionalDigits: 2,
-        provider: Provider.PSP1,
+        provider: Provider.PSP2,
         providerEventTime: eventTime,
         reference: 'ref1244',
         type: MessaageType.CLEARING,
       };
-      const input: PSP1Transaction = {
-        billing_currency: 'AED',
-        card_id: 'card123xYz',
-        fee_amount: 0,
+      const input: PSP2Transaction = {
         id: 'event_2345',
-        message_type: PSP1MessageType.CLEARING,
-        rrn: 'ref1244',
-        transaction_amount: 1000,
-        transaction_timestamp: eventTime,
+        reference: 'ref1244',
+        type: PSP2MessageType.ACCOUNT_TRANSACTION_POSTED,
+        transaction: {
+          account_id: 'card123xYz',
+          amount: '1000',
+          details: {
+            scheme_acceptor_country: 'ARE',
+            scheme_transmission_time: eventTime,
+          },
+        },
       };
       const result = mapper.map(input);
       expect(result).toEqual(expectedMapping);

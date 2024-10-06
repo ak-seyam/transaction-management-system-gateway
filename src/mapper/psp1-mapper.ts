@@ -1,14 +1,14 @@
-import { PSP1MessageType, PSP1Transaction } from 'src/controller/dto/dto';
-import PSPToTransactionEventMapper from './psp-to-transaction-events.mapper';
+import { PSP1MessageType, PSP1Transaction } from '@controller/dto/dto';
+import PSPToTransactionEventMapper from '@mapper/psp-to-transaction-events.mapper';
 import {
   MessaageType,
   Provider,
   TransactionEvent,
-} from 'src/common/proto/service';
+} from '@common/proto/service';
 import {
   getAmountInBaseCurerncy,
   getFractionalDigitsByCurrency,
-} from 'src/common/utils';
+} from '@common/utils';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -42,7 +42,7 @@ export default class PSP1Mapper
     };
   }
 
-  mapPSP1Type(message_type: PSP1MessageType): MessaageType {
+  private mapPSP1Type(message_type: PSP1MessageType): MessaageType {
     switch (message_type) {
       case PSP1MessageType.AUTHORIZATION:
         return MessaageType.AUTHORIZATION;

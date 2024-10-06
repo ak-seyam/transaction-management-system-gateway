@@ -1,15 +1,15 @@
-import { PSP2MessageType, PSP2Transaction } from 'src/controller/dto/dto';
-import PSPToTransactionEventMapper from './psp-to-transaction-events.mapper';
+import { PSP2MessageType, PSP2Transaction } from '@controller/dto/dto';
+import PSPToTransactionEventMapper from '@mapper/psp-to-transaction-events.mapper';
 import {
   MessaageType,
   Provider,
   TransactionEvent,
-} from 'src/common/proto/service';
+} from '@common/proto/service';
 import {
   getAmountInBaseCurerncy,
   getCurrencyFromCountry,
   getFractionalDigitsByCurrency,
-} from 'src/common/utils';
+} from '@common/utils';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -41,7 +41,7 @@ export default class PSP2Mapper
       type: this.mapPSP2Type(psp2TransactionEvent.type),
     };
   }
-  mapPSP2Type(type: PSP2MessageType): MessaageType {
+  private mapPSP2Type(type: PSP2MessageType): MessaageType {
     switch (type) {
       case PSP2MessageType.ACCOUNT_TRANSACTION_CREATED:
         return MessaageType.AUTHORIZATION;

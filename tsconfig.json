@@ -16,6 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@common/*": ["./src/common/*"],
+      "@controller/*": ["./src/controller/*"],
+      "@mapper/*": ["./src/mapper/*"],
+      "@repo/*": ["./src/repository/*"],
+      "@security/*": ["./src/security/*"]
+    }
   }
 }
