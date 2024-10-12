@@ -23,14 +23,14 @@ export default class PSP2Mapper
     const amount = getAmountInBaseCurerncy(
       currency,
       parseInt(psp2TransactionEvent.transaction.amount),
-    );
+    ).toString();
     const fractionalDigits = getFractionalDigitsByCurrency(currency);
     return {
       amount,
       cardToken: psp2TransactionEvent.transaction.account_id,
       currency,
       eventId: psp2TransactionEvent.id,
-      feesAmount: 0,
+      feesAmount: '0',
       feesCurrency: currency,
       feesFractionalDigits: fractionalDigits,
       fractionalDigits,

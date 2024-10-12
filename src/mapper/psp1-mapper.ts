@@ -20,14 +20,14 @@ export default class PSP1Mapper
       amount: getAmountInBaseCurerncy(
         psp1TransactionEvent.billing_currency,
         psp1TransactionEvent.transaction_amount,
-      ),
+      ).toString(),
       cardToken: psp1TransactionEvent.card_id,
       currency: psp1TransactionEvent.billing_currency,
       eventId: psp1TransactionEvent.id,
       feesAmount: getAmountInBaseCurerncy(
         psp1TransactionEvent.billing_currency,
         psp1TransactionEvent.fee_amount,
-      ),
+      ).toString(),
       feesCurrency: psp1TransactionEvent.billing_currency, // assuming  same currency for simplicity
       feesFractionalDigits: getFractionalDigitsByCurrency(
         psp1TransactionEvent.billing_currency,

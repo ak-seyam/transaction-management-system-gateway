@@ -10,8 +10,8 @@ export interface PSP1Transaction {
 }
 
 export enum PSP1MessageType {
-  AUTHORIZATION,
-  CLEARING,
+  AUTHORIZATION = 'AUTHORIZATION',
+  CLEARING = 'CLEARING',
 }
 
 export interface PSP2Transaction {

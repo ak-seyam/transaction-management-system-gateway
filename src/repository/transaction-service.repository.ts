@@ -1,4 +1,4 @@
-import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
+import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import {
   Ack,
@@ -23,7 +23,10 @@ export default class TransactionServiceRepository implements OnModuleInit {
   async sendTransactionEvent(event: TransactionEvent): Promise<Ack> {
     return new Promise((resolve, reject) => {
       this.transactionService.sendTransactionEvent(event).subscribe({
-        next: (ack) => resolve(ack),
+        next: (ack) => {
+          Logger.log(`Got response ${ack} for event ${event.eventId}`);
+          resolve(ack);
+        },
         error: (error) => reject(error),
       });
     });

@@ -17,12 +17,12 @@ describe('PSP1MapperTests', () => {
     it('should map psp1 authorization events successfully', () => {
       const eventTime = new Date();
       const expectedMapping: TransactionEvent = {
-        amount: 100_000,
+        amount: '100000',
         currency: 'AED',
         fractionalDigits: 2,
         cardToken: 'card123xYz',
         eventId: 'event_2345',
-        feesAmount: 0,
+        feesAmount: '0',
         feesCurrency: 'AED',
         feesFractionalDigits: 2,
         provider: Provider.PSP1,
@@ -47,12 +47,12 @@ describe('PSP1MapperTests', () => {
     it('should map psp1 clearing events successfully', () => {
       const eventTime = new Date();
       const expectedMapping: TransactionEvent = {
-        amount: 100_000,
+        amount: '100000',
         currency: 'AED',
         fractionalDigits: 2,
         cardToken: 'card123xYz',
         eventId: 'event_2345',
-        feesAmount: 0,
+        feesAmount: '0',
         feesCurrency: 'AED',
         feesFractionalDigits: 2,
         provider: Provider.PSP1,
