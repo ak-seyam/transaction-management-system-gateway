@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Inject, Logger } from '@nestjs/common';
+import { Inject, Logger } from '@nestjs/common';
 import { PSP1Transaction } from '@controller/dto/dto';
 import PSPToTransactionEventMapper from '@mapper/psp-to-transaction-events.mapper';
 import TransactionServiceRepository from '@repo/transaction-service.repository';
